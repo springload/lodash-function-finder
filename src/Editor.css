@@ -1,7 +1,12 @@
 .editor {
-  border: solid 1px #ccc;
+  font-family: monospace;
 }
 
 .editor__textarea {
   display: inline;
+  background: #ddd;
+}
+
+.editor__error {
+  color: #600;
 }

@@ -6,13 +6,15 @@ type Props = {
   handleValueChanged: Function;
   prefix?: string;
   suffix?: string;
+  error?: string;
 };
 
 const Editor = ({
   defaultValue,
   handleValueChanged,
   prefix,
-  suffix
+  suffix,
+  error
 }: Props) => {
   const [value] = useState<string>(defaultValue);
   const refSpan = useRef(null);
@@ -38,6 +40,11 @@ const Editor = ({
         {value}
       </span>
       {suffix ? suffix : ""}
+      {error ? (
+        <div aria-live="polite" className="editor__error">
+          {error}
+        </div>
+      ) : null}
     </div>
   );
 };
