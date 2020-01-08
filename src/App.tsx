@@ -3,10 +3,11 @@ import lodash from "lodash";
 import "./App.css";
 import Editor from "./Editor";
 import lodashMatches from "./lodashMatches";
+import examples from "./constants";
 
 const App: React.FC = () => {
-  const [input, setInput] = useState<string>(`["a", "b", "c"], "~"`);
-  const [output, setOutput] = useState<string>(`"a~b~c"`);
+  const [input, setInput] = useState<string>(examples[0].input);
+  const [output, setOutput] = useState<string>(examples[0].output);
   const [inputError, setInputError] = useState<string>(null);
   const [outputError, setOutputError] = useState<string>(null);
 
@@ -33,6 +34,14 @@ const App: React.FC = () => {
     [setInput, setLodashFunctions, setInputError, setOutputError]
   );
 
+  const handleExampleChanged = useCallback(
+    (index: number) => {
+      setInput(examples[index].input);
+      setOutput(examples[index].output);
+    },
+    [setInput, setLodashFunctions, setInputError, setOutputError]
+  )
+
   return (
     <div className="App">
       <h1>Lodash Function Finder</h1>
@@ -45,6 +54,7 @@ const App: React.FC = () => {
         <span className="code">output</span> and we'll show Lodash functions
         that match.
       </p>
+      {examples.map((example, index) => <button onClick={() => handleExampleChanged(index)}>{example.name}</button>)}
       <h2>Input</h2>
       <Editor
         defaultValue={input}
