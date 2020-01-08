@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/lodash-function-finder/static/css/main.901aedcc.chunk.css",
+    "main.js": "/lodash-function-finder/static/js/main.3cf69e54.chunk.js",
+    "main.js.map": "/lodash-function-finder/static/js/main.3cf69e54.chunk.js.map",
+    "runtime-main.js": "/lodash-function-finder/static/js/runtime-main.be917091.js",
+    "runtime-main.js.map": "/lodash-function-finder/static/js/runtime-main.be917091.js.map",
+    "static/js/2.f2732f54.chunk.js": "/lodash-function-finder/static/js/2.f2732f54.chunk.js",
+    "static/js/2.f2732f54.chunk.js.map": "/lodash-function-finder/static/js/2.f2732f54.chunk.js.map",
+    "index.html": "/lodash-function-finder/index.html",
+    "precache-manifest.69ed9a22bdcb9dff8932221c3f4b3051.js": "/lodash-function-finder/precache-manifest.69ed9a22bdcb9dff8932221c3f4b3051.js",
+    "service-worker.js": "/lodash-function-finder/service-worker.js",
+    "static/css/main.901aedcc.chunk.css.map": "/lodash-function-finder/static/css/main.901aedcc.chunk.css.map",
+    "static/js/2.f2732f54.chunk.js.LICENSE": "/lodash-function-finder/static/js/2.f2732f54.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.be917091.js",
+    "static/js/2.f2732f54.chunk.js",
+    "static/css/main.901aedcc.chunk.css",
+    "static/js/main.3cf69e54.chunk.js"
+  ]
+}
