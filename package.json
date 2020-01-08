@@ -20,8 +20,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "rebuild-lodash-types": "node ./lodash-ts-to-json-schema.js"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,7 +41,6 @@
     "@types/json5": "^0.0.30",
     "@types/lodash": "^4.14.149",
     "@types/prismjs": "^1.16.0",
-    "lodash": "^4.17.15",
-    "typescript-json-schema": "^0.42.0"
+    "lodash": "^4.17.15"
   }
 }
