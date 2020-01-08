@@ -18,6 +18,7 @@ export default function(input: string, output: string): LodashFnsResponse {
   try {
     outputObjString = JSON5.stringify(JSON5.parse(outputJSONString));
   } catch (e) {
+    console.log("output error", e.toString());
     return {
       matchingFns: [],
       inputError: null,
