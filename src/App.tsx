@@ -16,8 +16,8 @@ const App: React.FC = () => {
     const response = lodashMatches(input, output);
     setLodashFunctions(response.matchingFns);
     setInputError(response.inputError);
-    setInputError(response.outputError);
-  }, [input, output, setInputError, setOutputError]);
+    setOutputError(response.outputError);
+  }, [input, output, setLodashFunctions, setInputError, setOutputError]);
 
   const handleInputChanged = useCallback(
     (input: string) => {
@@ -60,8 +60,9 @@ const App: React.FC = () => {
         error={outputError}
       />
       <h2>Matching Lodash Functions</h2>
+
       {lodashFunctions.length > 0 ? (
-        <Fragment>
+        <div aria-live="polite">
           Found {lodashFunctions.length} match
           {lodashFunctions.length > 1 ? "es" : ""}
           {": "}
@@ -77,7 +78,7 @@ const App: React.FC = () => {
               {index < arr.length - 1 ? ", " : "."}
             </Fragment>
           ))}{" "}
-        </Fragment>
+        </div>
       ) : (
         "No matching lodash functions :("
       )}
