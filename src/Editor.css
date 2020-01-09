@@ -3,8 +3,10 @@
 }
 
 .editor__textarea {
-  display: inline;
+  display: inline-block;
   background: #ddd;
+  border-style: inset;
+  padding: 3px;
 }
 
 .editor__error {

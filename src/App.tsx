@@ -34,7 +34,7 @@ const App: React.FC = () => {
     [setInput, setLodashFunctions, setInputError, setOutputError]
   );
 
-  const handleExampleChanged = () => {
+  const handleExampleChanged = useCallback(() => {
     let newInput = input;
     let newOutput = output;
     while (input === newInput && output === newOutput) {
@@ -44,7 +44,7 @@ const App: React.FC = () => {
     }
     setInput(newInput);
     setOutput(newOutput);
-  }
+  }, [input, output, setInput, setOutput])
 
   return (
     <div className="App">
@@ -59,10 +59,10 @@ const App: React.FC = () => {
         that match.
       </p>
       <p>To see more example inputs and outputs, click the button below.</p>
-      <button onClick={handleExampleChanged}>New Example</button>
+      <button onClick={handleExampleChanged}>Random Example</button>
       <h2>Input</h2>
       <Editor
-        defaultValue={input}
+        value={input}
         handleValueChanged={handleInputChanged}
         prefix="someLodashFunction("
         suffix=");"
@@ -70,7 +70,7 @@ const App: React.FC = () => {
       />
       <h2>Output</h2>
       <Editor
-        defaultValue={output}
+        value={output}
         handleValueChanged={handleOutputChanged}
         error={outputError}
       />

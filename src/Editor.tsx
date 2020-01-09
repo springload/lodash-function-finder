@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import "./Editor.css";
 
 type Props = {
-  defaultValue: string;
+  value: string;
   handleValueChanged: Function;
   prefix?: string;
   suffix?: string;
@@ -10,18 +10,13 @@ type Props = {
 };
 
 const Editor = ({
-  defaultValue,
+  value,
   handleValueChanged,
   prefix,
   suffix,
   error
 }: Props) => {
-  const [value, setValue] = useState<string>(defaultValue);
   const refSpan = useRef(null);
-
-  useEffect(() => {
-    setValue(defaultValue);
-  }, [defaultValue])
 
   return (
     <div
