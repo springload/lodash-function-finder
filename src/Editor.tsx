@@ -16,12 +16,7 @@ const Editor = ({
   suffix,
   error
 }: Props) => {
-  const [value, setValue] = useState<string>(defaultValue);
   const refSpan = useRef(null);
-
-  useEffect(() => {
-    setValue(defaultValue);
-  }, [defaultValue])
 
   return (
     <div
@@ -42,7 +37,7 @@ const Editor = ({
           handleValueChanged(newValue);
         }}
       >
-        {value}
+        {defaultValue}
       </span>
       {suffix ? suffix : ""}
       {error ? (
