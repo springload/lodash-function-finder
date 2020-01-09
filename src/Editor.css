@@ -5,6 +5,8 @@
 .editor__textarea {
   display: inline;
   background: #ddd;
+  border-style: inset;
+  padding: 3px;
 }
 
 .editor__error {
