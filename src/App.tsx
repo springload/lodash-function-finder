@@ -48,6 +48,10 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
+      <div className="header">
+        <img className="header-logo" src="springload.svg"></img>
+      </div>
+      <div className="main">
       <h1>Lodash Function Finder</h1>
       <p>
         Lodash has about {lodashFns.length} functions and it can be hard to find
@@ -104,7 +108,6 @@ const App: React.FC = () => {
       <p>
         <i>Note:</i> The input/output can't include functions.
       </p>
-
       <footer>
         Brought to you by{" "}
         <a
@@ -116,6 +119,7 @@ const App: React.FC = () => {
         </a>
         , a web development agency in New Zealand.
       </footer>
+    </div>
     </div>
   );
 };
