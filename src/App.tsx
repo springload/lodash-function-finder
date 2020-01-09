@@ -62,7 +62,7 @@ const App: React.FC = () => {
       <button onClick={handleExampleChanged}>Random Example</button>
       <h2>Input</h2>
       <Editor
-        defaultValue={input}
+        value={input}
         handleValueChanged={handleInputChanged}
         prefix="someLodashFunction("
         suffix=");"
@@ -70,7 +70,7 @@ const App: React.FC = () => {
       />
       <h2>Output</h2>
       <Editor
-        defaultValue={output}
+        value={output}
         handleValueChanged={handleOutputChanged}
         error={outputError}
       />

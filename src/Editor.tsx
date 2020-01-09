@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import "./Editor.css";
 
 type Props = {
-  defaultValue: string;
+  value: string;
   handleValueChanged: Function;
   prefix?: string;
   suffix?: string;
@@ -10,7 +10,7 @@ type Props = {
 };
 
 const Editor = ({
-  defaultValue,
+  value,
   handleValueChanged,
   prefix,
   suffix,
@@ -37,7 +37,7 @@ const Editor = ({
           handleValueChanged(newValue);
         }}
       >
-        {defaultValue}
+        {value}
       </span>
       {suffix ? suffix : ""}
       {error ? (
