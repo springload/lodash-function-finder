@@ -34,13 +34,17 @@ const App: React.FC = () => {
     [setInput, setLodashFunctions, setInputError, setOutputError]
   );
 
-  const handleExampleChanged = useCallback(
-    (index: number) => {
-      setInput(examples[index].input);
-      setOutput(examples[index].output);
-    },
-    [setInput, setLodashFunctions, setInputError, setOutputError]
-  )
+  const handleExampleChanged = () => {
+    let newInput = input;
+    let newOutput = output;
+    while (input === newInput && output === newOutput) {
+      const index = Math.floor(Math.random() * examples.length);
+      newInput = examples[index].input;
+      newOutput = examples[index].output;
+    }
+    setInput(newInput);
+    setOutput(newOutput);
+  }
 
   return (
     <div className="App">
@@ -54,7 +58,8 @@ const App: React.FC = () => {
         <span className="code">output</span> and we'll show Lodash functions
         that match.
       </p>
-      {examples.map((example, index) => <button onClick={() => handleExampleChanged(index)}>{example.name}</button>)}
+      <p>To see more example inputs and outputs, click the button below.</p>
+      <button onClick={handleExampleChanged}>New Example</button>
       <h2>Input</h2>
       <Editor
         defaultValue={input}
