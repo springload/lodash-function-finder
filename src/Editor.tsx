@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Editor.css";
 
 type Props = {
@@ -16,8 +16,13 @@ const Editor = ({
   suffix,
   error
 }: Props) => {
-  const [value] = useState<string>(defaultValue);
+  const [value, setValue] = useState<string>(defaultValue);
   const refSpan = useRef(null);
+
+  useEffect(() => {
+    setValue(defaultValue);
+  }, [defaultValue])
+
   return (
     <div
       className="editor"
