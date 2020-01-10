@@ -6,11 +6,12 @@ export default function(input: string, output: string): LodashFnsResponse {
   const outputJSONString = `${output}`;
   let inputArgs: any[] = [];
   try {
-    inputArgs = JSON5.parse(inputJSONString);
+    // eslint-disable-next-line no-eval
+    inputArgs = eval(inputJSONString);
   } catch (e) {
     return {
       matchingFns: [],
-      inputError: `Problem parsing: ${removeJSON5(e.toString())}`,
+      inputError: `Problem parsing: ${e.toString()}`,
       outputError: null
     };
   }
