@@ -53,6 +53,10 @@ a {
   text-decoration: none;
 }
 
+a:focus {
+  outline-color: #348358;
+}
+
 a:hover {
   text-decoration: underline solid #348358;
 }
@@ -84,6 +88,10 @@ a:hover {
   padding-right: 20px;
   margin-top: 8px;
   cursor: pointer;
+}
+
+.example-button:focus {
+  outline-color: #348358;
 }
 
 @media only screen and (min-width: 560px) {
