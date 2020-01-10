@@ -1,5 +1,4 @@
 .App {
-  margin: 0 auto;
   font-family: sans-serif;
   padding: 32px;
 }
@@ -27,35 +26,24 @@ footer {
 
 .code {
   background: #ddd;
-  font-family: monospace;
 }
 
 h1 {
   margin-bottom: 32px;
-  line-height: 1;
-}
-
-h2 {
-  line-height: 1;
-}
-
-p {
-  line-height: 1.75;
-  margin-bottom: 16px;
 }
 
 a {
   color: #348358;
-  font-weight: 500;
   text-decoration: none;
 }
 
-a:focus {
-  outline-color: #348358;
-}
 
 a:hover {
   text-decoration: underline solid #348358;
+}
+
+a:focus, .example-button:focus {
+  outline-color: #348358;
 }
 
 .main {
@@ -78,25 +66,20 @@ a:hover {
   background-color: #42A96E;
   border-radius: 5px;
   color: #fff;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  margin-left: 2px;
-}
-
-.example-button:focus {
-  outline-color: #348358;
 }
 
 .lff {
+  border: solid 1px #eee;
+  box-shadow: 0px 0px 2px #ccc;
+  padding: 0px 1em 1.5em 1em;
   margin-top: 24px;
   margin-bottom: 24px;
 }
 
 @media only screen and (min-width: 560px) {
-  h1 {
-    margin-bottom: 24px;
-  }
   .header-logo {
     height: 16px;
   }
@@ -105,10 +88,6 @@ a:hover {
 @media only screen and (min-width: 768px) {
   h1 {
     margin-bottom: 40px;
-  }
-
-  p {
-    line-height: 1.4;
   }
 
   .App {
@@ -124,8 +103,3 @@ a:hover {
   }
 }
 
-.lff {
-  border: solid 1px #eee;
-  box-shadow: 0px 0px 2px #ccc;
-  padding: 0px 1em 1.5em 1em;
-}
