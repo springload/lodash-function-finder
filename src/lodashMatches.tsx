@@ -5,24 +5,25 @@ export default function(input: string, output: string): LodashFnsResponse {
   const inputJSString = `[${input}]`;
   const outputJSONString = `${output}`;
   let inputArgs: any[] = [];
+  let inputError = null;
+  let outputError = null;
   try {
     // eslint-disable-next-line no-eval
     inputArgs = eval(inputJSString);
   } catch (e) {
-    return {
-      matchingFns: [],
-      inputError: `Problem parsing: ${e.toString()}`,
-      outputError: null
-    };
+    inputError = `Problem parsing: ${e.toString()}`;
   }
   let outputObjString: string;
   try {
     outputObjString = JSON5.stringify(JSON5.parse(outputJSONString));
   } catch (e) {
+    outputError = `Problem parsing: ${removeJSON5(e.toString())}`;
+  }
+  if (inputError || outputError) {
     return {
       matchingFns: [],
-      inputError: null,
-      outputError: `Problem parsing: ${removeJSON5(e.toString())}`
+      inputError,
+      outputError
     };
   }
   const fns = Object.keys(lodash);

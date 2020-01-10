@@ -1,12 +1,19 @@
 import React, { useState, useCallback, Fragment, useEffect } from "react";
 import lodash from "lodash";
-import 'what-input';
+import "what-input";
 import "./App.css";
 import Editor from "./Editor";
 import lodashMatches from "./lodashMatches";
 import examples from "./constants";
 
 const App: React.FC = () => {
+  /*
+   * Developer note
+   *
+   * Never allow the input to come from the URL (ie, in hashstate or something)
+   * because we're eval()ing the contents and people shouldn't be able to link to
+   * javascript that executes on our domain.
+   */
   const [input, setInput] = useState<string>(examples[0].input);
   const [output, setOutput] = useState<string>(examples[0].output);
   const [inputError, setInputError] = useState<string>(null);
@@ -50,77 +57,91 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <div className="header">
-        <img className="header-logo" src="springload.svg"></img>
-      </div>
-      <div className="main">
-      <h1>Lodash Function Finder</h1>
-      <p>
-        Lodash has about {lodashFns.length} functions and it can be hard to find
-        the one you want.
-      </p>
-      <p>
-        Instead type the expected <code>input</code> and <code>output</code> and{" "}
-        <b>Lodash Function Finder</b> will show any Lodash functions that match.
-      </p>
-      <p>
-        Try a <button onClick={handleExampleChanged} className="example-button">Random Example</button> or
-        just type your own input/output.
-      </p>
-      <div className="lff">
-        <h2>Input</h2>
-        <Editor
-          value={input}
-          handleValueChanged={handleInputChanged}
-          prefix="someLodashFunction("
-          suffix=");"
-          error={inputError}
-        />
-        <h2>Output</h2>
-        <Editor
-          value={output}
-          handleValueChanged={handleOutputChanged}
-          error={outputError}
-        />
-        <h2>Matching Lodash Functions</h2>
-        {lodashFunctions.length > 0 ? (
-          <div aria-live="polite">
-            Found {lodashFunctions.length} match
-            {lodashFunctions.length > 1 ? "es " : " "}
-            for that input+output:{" "}
-            {lodashFunctions.map((fn, index, arr) => (
-              <Fragment>
-                <a
-                  href={`https://lodash.com/docs/#${fn}`}
-                  key={fn}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {fn}
-                </a>
-                {index < arr.length - 1 ? ", " : "."}
-              </Fragment>
-            ))}{" "}
-          </div>
-        ) : (
-          "No matching lodash functions :("
-        )}
-      </div>
-
-      <p>
-        <i>Note:</i> The output can't include functions.
-      </p>
-      <footer>
-        Brought to you by{" "}
         <a
           href="https://springload.co.nz/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Springload
+          <img
+            className="header-logo"
+            src="springload.svg"
+            alt="Springload: a web development agency in New Zealand"
+          />
         </a>
-        , a web development agency in New Zealand.
-      </footer>
-    </div>
+      </div>
+      <div className="main">
+        <h1>Lodash Function Finder</h1>
+        <p>
+          Lodash has about {lodashFns.length} functions and it can be hard to
+          find the one you want.
+        </p>
+        <p>
+          Instead type the expected <code>input</code> and <code>output</code>{" "}
+          and <b>Lodash Function Finder</b> will show any Lodash functions that
+          match.
+        </p>
+        <p>
+          Try a{" "}
+          <button onClick={handleExampleChanged} className="example-button">
+            Random Example
+          </button>{" "}
+          or just type your own input/output.
+        </p>
+        <div className="lff">
+          <h2>Input</h2>
+          <Editor
+            value={input}
+            handleValueChanged={handleInputChanged}
+            prefix="someLodashFunction("
+            suffix=");"
+            error={inputError}
+          />
+          <h2>Output</h2>
+          <Editor
+            value={output}
+            handleValueChanged={handleOutputChanged}
+            error={outputError}
+          />
+          <h2>Matching Lodash Functions</h2>
+          {lodashFunctions.length > 0 ? (
+            <div aria-live="polite">
+              Found {lodashFunctions.length} match
+              {lodashFunctions.length > 1 ? "es " : " "}
+              for that input+output:{" "}
+              {lodashFunctions.map((fn, index, arr) => (
+                <Fragment>
+                  <a
+                    href={`https://lodash.com/docs/#${fn}`}
+                    key={fn}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {fn}
+                  </a>
+                  {index < arr.length - 1 ? ", " : "."}
+                </Fragment>
+              ))}{" "}
+            </div>
+          ) : (
+            "No matching lodash functions :("
+          )}
+        </div>
+
+        <p>
+          <i>Note:</i> The output can't include functions.
+        </p>
+        <footer>
+          Brought to you by{" "}
+          <a
+            href="https://springload.co.nz/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Springload
+          </a>
+          , a web development agency in New Zealand.
+        </footer>
+      </div>
     </div>
   );
 };
