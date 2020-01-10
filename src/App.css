@@ -39,7 +39,6 @@ h1 {
 
 h2 {
   line-height: 1;
-  margin-top: 28px;
 }
 
 p {
@@ -77,21 +76,23 @@ a:hover {
 }
 
 .example-button {
-  height: 36px;
   border: 1px solid #42A96E;
   background-color: #42A96E;
   border-radius: 5px;
   color: #fff;
   font-size: 16px;
   font-weight: 600;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-top: 8px;
   cursor: pointer;
+  margin-left: 2px;
 }
 
 .example-button:focus {
   outline-color: #348358;
+}
+
+.lff {
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
 @media only screen and (min-width: 560px) {

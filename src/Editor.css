@@ -11,9 +11,6 @@
   line-height: 1.4;
 }
 
-.editor__textarea input {
-}
-
 .editor__textarea:focus {
   outline-color: #348358;
 }

@@ -63,7 +63,7 @@ const App: React.FC = () => {
         <b>Lodash Function Finder</b> will show any Lodash functions that match.
       </p>
       <p>
-        Try a <button onClick={handleExampleChanged}>Random Example</button> or
+        Try a <button onClick={handleExampleChanged} className="example-button">Random Example</button> or
         just type your own input/output.
       </p>
       <div className="lff">
