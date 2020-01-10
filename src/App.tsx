@@ -1,5 +1,6 @@
 import React, { useState, useCallback, Fragment, useEffect } from "react";
 import lodash from "lodash";
+import 'what-input';
 import "./App.css";
 import Editor from "./Editor";
 import lodashMatches from "./lodashMatches";

@@ -26,3 +26,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* https://www.npmjs.com/package/what-input
+disables the focus outline when a user clicks with the mouse */
+[data-whatintent='mouse'] *:focus {
+  outline: none;
+}
+
+[data-whatintent='touch'] *:focus {
+  outline: none;
+}
