@@ -1,5 +1,6 @@
 .editor {
   font-family: monospace;
+  overflow-wrap: break-word;
 }
 
 .editor__textarea {
@@ -11,7 +12,8 @@
   line-height: 1.4;
 }
 
-.editor__textarea input {
+.editor__textarea:focus {
+  outline-color: #348358;
 }
 
 .editor__error {

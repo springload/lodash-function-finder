@@ -1,7 +1,6 @@
 .App {
-  max-width: 600px;
-  margin: 0 auto;
   font-family: sans-serif;
+  padding: 32px;
 }
 
 h1,
@@ -11,9 +10,6 @@ h4,
 h5,
 h6 {
   font-weight: 100;
-}
-
-h2 {
 }
 
 p {
@@ -32,8 +28,81 @@ footer {
   background: #ddd;
 }
 
+h1 {
+  margin-bottom: 32px;
+}
+
+a {
+  color: #348358;
+  text-decoration: none;
+}
+
+
+a:hover {
+  text-decoration: underline solid #348358;
+}
+
+a:focus, .example-button:focus {
+  outline-color: #348358;
+}
+
+.main {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.header {
+  min-height: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header-logo {
+  height: 12px;
+}
+
+.example-button {
+  border: 1px solid #42A96E;
+  background-color: #42A96E;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .lff {
   border: solid 1px #eee;
   box-shadow: 0px 0px 2px #ccc;
   padding: 0px 1em 1.5em 1em;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
+
+@media only screen and (min-width: 560px) {
+  .header-logo {
+    height: 14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  h1 {
+    margin-bottom: 40px;
+  }
+
+  .App {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+  .header {
+    min-height: 32px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .App {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+

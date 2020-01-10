@@ -1,5 +1,6 @@
 import React, { useState, useCallback, Fragment, useEffect } from "react";
 import lodash from "lodash";
+import 'what-input';
 import "./App.css";
 import Editor from "./Editor";
 import lodashMatches from "./lodashMatches";
@@ -48,6 +49,10 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
+      <div className="header">
+        <img className="header-logo" src="springload.svg"></img>
+      </div>
+      <div className="main">
       <h1>Lodash Function Finder</h1>
       <p>
         Lodash has about {lodashFns.length} functions and it can be hard to find
@@ -58,7 +63,7 @@ const App: React.FC = () => {
         <b>Lodash Function Finder</b> will show any Lodash functions that match.
       </p>
       <p>
-        Try a <button onClick={handleExampleChanged}>Random Example</button> or
+        Try a <button onClick={handleExampleChanged} className="example-button">Random Example</button> or
         just type your own input/output.
       </p>
       <div className="lff">
@@ -104,7 +109,6 @@ const App: React.FC = () => {
       <p>
         <i>Note:</i> The input/output can't include functions.
       </p>
-
       <footer>
         Brought to you by{" "}
         <a
@@ -116,6 +120,7 @@ const App: React.FC = () => {
         </a>
         , a web development agency in New Zealand.
       </footer>
+    </div>
     </div>
   );
 };
