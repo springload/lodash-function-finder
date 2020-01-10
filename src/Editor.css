@@ -5,7 +5,7 @@
 .editor__textarea {
   font-family: monospace;
   border: 2px inset #ccc;
-  padding: 3px;
+  padding: 3px 3px 0px 3px;
   background: #eee;
   vertical-align: bottom;
   line-height: 1.4;
