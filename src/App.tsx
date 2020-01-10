@@ -107,7 +107,7 @@ const App: React.FC = () => {
       </div>
 
       <p>
-        <i>Note:</i> The input/output can't include functions.
+        <i>Note:</i> The output can't include functions.
       </p>
       <footer>
         Brought to you by{" "}
