@@ -2,12 +2,12 @@ import lodash from "lodash";
 import JSON5 from "json5";
 
 export default function(input: string, output: string): LodashFnsResponse {
-  const inputJSONString = `[${input}]`;
+  const inputJSString = `[${input}]`;
   const outputJSONString = `${output}`;
   let inputArgs: any[] = [];
   try {
     // eslint-disable-next-line no-eval
-    inputArgs = eval(inputJSONString);
+    inputArgs = eval(inputJSString);
   } catch (e) {
     return {
       matchingFns: [],
