@@ -52,7 +52,7 @@ a:focus, .example-button:focus {
 }
 
 .header {
-  min-height: 48px;
+  min-height: 24px;
   display: flex;
   justify-content: flex-end;
 }
@@ -81,7 +81,7 @@ a:focus, .example-button:focus {
 
 @media only screen and (min-width: 560px) {
   .header-logo {
-    height: 16px;
+    height: 14px;
   }
 }
 
@@ -93,6 +93,9 @@ a:focus, .example-button:focus {
   .App {
     padding-left: 48px;
     padding-right: 48px;
+  }
+  .header {
+    min-height: 32px;
   }
 }
 
