@@ -1,9 +1,7 @@
 .App {
   margin: 0 auto;
   font-family: sans-serif;
-  padding-top: 32px;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding: 32px;
 }
 
 h1,
