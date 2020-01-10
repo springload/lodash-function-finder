@@ -10,7 +10,7 @@ export default function(input: string, output: string): LodashFnsResponse {
   } catch (e) {
     return {
       matchingFns: [],
-      inputError: `Problem parsing: ${inputJSONString}`,
+      inputError: `Problem parsing: ${removeJSON5(e.toString())}`,
       outputError: null
     };
   }
@@ -21,7 +21,7 @@ export default function(input: string, output: string): LodashFnsResponse {
     return {
       matchingFns: [],
       inputError: null,
-      outputError: e.toString()
+      outputError: `Problem parsing: ${removeJSON5(e.toString())}`
     };
   }
   const fns = Object.keys(lodash);
@@ -52,3 +52,7 @@ type LodashFnsResponse = {
   inputError: null | string;
   outputError: null | string;
 };
+
+function removeJSON5(str: string): string {
+  return str.replace(/JSON5:?/gi, "");
+}

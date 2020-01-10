@@ -24,14 +24,14 @@ const App: React.FC = () => {
     (input: string) => {
       setInput(input);
     },
-    [setInput, setLodashFunctions, setInputError, setOutputError]
+    [setInput]
   );
 
   const handleOutputChanged = useCallback(
     (output: string) => {
       setOutput(output);
     },
-    [setInput, setLodashFunctions, setInputError, setOutputError]
+    [setOutput]
   );
 
   const handleExampleChanged = useCallback(() => {
@@ -44,59 +44,78 @@ const App: React.FC = () => {
     }
     setInput(newInput);
     setOutput(newOutput);
-  }, [input, output, setInput, setOutput])
+  }, [input, output, setInput, setOutput]);
 
   return (
     <div className="App">
       <h1>Lodash Function Finder</h1>
       <p>
-        Lodash has about {lodashFns.length} functions and it can be hard to
-        remember all of them.
+        Lodash has about {lodashFns.length} functions and it can be hard to find
+        the one you want.
       </p>
       <p>
-        Enter the expected <span className="code">input</span> and{" "}
-        <span className="code">output</span> and we'll show Lodash functions
-        that match.
+        Instead type the expected <code>input</code> and <code>output</code> and{" "}
+        <b>Lodash Function Finder</b> will show any Lodash functions that match.
       </p>
-      <p>To see more example inputs and outputs, click the button below.</p>
-      <button onClick={handleExampleChanged}>Random Example</button>
-      <h2>Input</h2>
-      <Editor
-        value={input}
-        handleValueChanged={handleInputChanged}
-        prefix="someLodashFunction("
-        suffix=");"
-        error={inputError}
-      />
-      <h2>Output</h2>
-      <Editor
-        value={output}
-        handleValueChanged={handleOutputChanged}
-        error={outputError}
-      />
-      <h2>Matching Lodash Functions</h2>
+      <p>
+        Try a <button onClick={handleExampleChanged}>Random Example</button> or
+        just type your own input/output.
+      </p>
+      <div className="lff">
+        <h2>Input</h2>
+        <Editor
+          value={input}
+          handleValueChanged={handleInputChanged}
+          prefix="someLodashFunction("
+          suffix=");"
+          error={inputError}
+        />
+        <h2>Output</h2>
+        <Editor
+          value={output}
+          handleValueChanged={handleOutputChanged}
+          error={outputError}
+        />
+        <h2>Matching Lodash Functions</h2>
+        {lodashFunctions.length > 0 ? (
+          <div aria-live="polite">
+            Found {lodashFunctions.length} match
+            {lodashFunctions.length > 1 ? "es " : " "}
+            for that input+output:{" "}
+            {lodashFunctions.map((fn, index, arr) => (
+              <Fragment>
+                <a
+                  href={`https://lodash.com/docs/#${fn}`}
+                  key={fn}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {fn}
+                </a>
+                {index < arr.length - 1 ? ", " : "."}
+              </Fragment>
+            ))}{" "}
+          </div>
+        ) : (
+          "No matching lodash functions :("
+        )}
+      </div>
 
-      {lodashFunctions.length > 0 ? (
-        <div aria-live="polite">
-          Found {lodashFunctions.length} match
-          {lodashFunctions.length > 1 ? "es" : ""}
-          {": "}
-          {lodashFunctions.map((fn, index, arr) => (
-            <Fragment>
-              <a
-                href={`https://lodash.com/docs/#${fn}`}
-                key={fn}
-                target="_blank"
-              >
-                {fn}
-              </a>
-              {index < arr.length - 1 ? ", " : "."}
-            </Fragment>
-          ))}{" "}
-        </div>
-      ) : (
-        "No matching lodash functions :("
-      )}
+      <p>
+        <i>Note:</i> The input/output can't include functions.
+      </p>
+
+      <footer>
+        Brought to you by{" "}
+        <a
+          href="https://springload.co.nz/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Springload
+        </a>
+        , a web development agency in New Zealand.
+      </footer>
     </div>
   );
 };

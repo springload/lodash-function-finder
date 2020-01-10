@@ -1,5 +1,13 @@
 const examples = [
   {
+    input: `"new zealand"`,
+    output: `"New Zealand"`
+  },
+  {
+    input: `["a", "b"], ["y", "z"]`,
+    output: `[["a", "y"], ["b", "z"]]`
+  },
+  {
     input: `["a", "b", "c"], "~"`,
     output: `"a~b~c"`
   },
@@ -91,6 +99,6 @@ const examples = [
     input: `{ "a": { "b": 2 } }, "a"`,
     output: `true`
   }
-]
+];
 
 export default examples;

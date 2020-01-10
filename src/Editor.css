@@ -3,10 +3,15 @@
 }
 
 .editor__textarea {
-  display: inline-block;
-  background: #ddd;
-  border-style: inset;
+  font-family: monospace;
+  border: 2px inset #ccc;
   padding: 3px;
+  background: #eee;
+  vertical-align: bottom;
+  line-height: 1.4;
+}
+
+.editor__textarea input {
 }
 
 .editor__error {

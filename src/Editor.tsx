@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useRef } from "react";
+import { clamp } from "lodash";
 import "./Editor.css";
 
 type Props = {
@@ -8,6 +9,8 @@ type Props = {
   suffix?: string;
   error?: string;
 };
+
+const WRAP_AT = 40;
 
 const Editor = ({
   value,
@@ -27,18 +30,18 @@ const Editor = ({
       }}
     >
       {prefix ? prefix : ""}
-      <span
+      <textarea
         className="editor__textarea"
         ref={refSpan}
-        contentEditable
-        onKeyUp={e => {
+        value={value}
+        rows={Math.floor(value.length / WRAP_AT) + 1}
+        cols={clamp(value.length, 1, WRAP_AT)}
+        onChange={e => {
           if (!refSpan || !refSpan.current) return;
-          const newValue = refSpan.current.innerText;
+          const newValue = e.target.value;
           handleValueChanged(newValue);
         }}
-      >
-        {value}
-      </span>
+      />
       {suffix ? suffix : ""}
       {error ? (
         <div aria-live="polite" className="editor__error">
