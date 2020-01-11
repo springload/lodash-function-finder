@@ -13,12 +13,14 @@ export default function(input: string, output: string): LodashFnsResponse {
   } catch (e) {
     inputError = `Problem parsing: ${e.toString()}`;
   }
-  let outputObjString: string;
+
+  let outputValue: any;
   try {
-    outputObjString = JSON5.stringify(JSON5.parse(outputJSONString));
+    outputValue = JSON5.parse(outputJSONString);
   } catch (e) {
     outputError = `Problem parsing: ${removeJSON5(e.toString())}`;
   }
+
   if (inputError || outputError) {
     return {
       matchingFns: [],
@@ -26,6 +28,8 @@ export default function(input: string, output: string): LodashFnsResponse {
       outputError
     };
   }
+  const outputObjString = JSON5.stringify(outputValue);
+
   const fns = Object.keys(lodash);
   const matchingFns = fns.filter(fn => {
     // @ts-ignore
@@ -33,8 +37,22 @@ export default function(input: string, output: string): LodashFnsResponse {
     if (typeof lodashFn !== "function") {
       return false;
     }
+    const inputValue = lodash.cloneDeep(inputArgs);
+
+    if (
+      // special case for 'map'-like functions
+      // if both arrays and same length a map
+      // could return this data
+      ["map", "flatMap"].includes(fn) &&
+      Array.isArray(inputValue) &&
+      Array.isArray(outputValue) &&
+      inputValue.length === outputValue.length
+    ) {
+      return true;
+    }
+
     try {
-      const actualOutputObj = lodashFn(...lodash.cloneDeep(inputArgs));
+      const actualOutputObj = lodashFn(...inputValue);
       const actualOutputObjString = JSON5.stringify(actualOutputObj);
       return actualOutputObjString === outputObjString;
     } catch (e) {
