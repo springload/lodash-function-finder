@@ -43,7 +43,7 @@ export default function(input: string, output: string): LodashFnsResponse {
       // special case for 'map'-like functions
       // if both arrays and same length a map
       // could return this data
-      ["map", "flatMap"].includes(fn) &&
+      ["map"].includes(fn) &&
       Array.isArray(inputValue) &&
       Array.isArray(outputValue) &&
       inputValue.length === outputValue.length
