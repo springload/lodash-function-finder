@@ -8,6 +8,9 @@ export default function(input: string, output: string): LodashFnsResponse {
   let inputError = null;
   let outputError = null;
   try {
+    // See https://github.com/springload/lodash-function-finder/pull/6
+    // for justification for eval().
+    // We should NEVER rehydrate input from url args.
     // eslint-disable-next-line no-eval
     inputArgs = eval(inputJSString);
   } catch (e) {
@@ -45,8 +48,10 @@ export default function(input: string, output: string): LodashFnsResponse {
       // could return this data
       ["map"].includes(fn) &&
       Array.isArray(inputValue) &&
+      inputValue.length > 1 && // has at least 2 args
+      Array.isArray(inputValue[0]) && // first input arg is an array
       Array.isArray(outputValue) &&
-      inputValue.length === outputValue.length
+      inputValue[0].length === outputValue.length
     ) {
       return true;
     }

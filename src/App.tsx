@@ -109,10 +109,9 @@ const App: React.FC = () => {
               {lodashFunctions.length > 1 ? "es " : " "}
               for that input+output:{" "}
               {lodashFunctions.map((fn, index, arr) => (
-                <Fragment>
+                <Fragment key={fn}>
                   <a
                     href={`https://lodash.com/docs/#${fn}`}
-                    key={fn}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

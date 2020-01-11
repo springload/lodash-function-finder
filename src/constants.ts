@@ -4,6 +4,10 @@ const examples = [
     output: `"New Zealand"`
   },
   {
+    input: `[{id:1},{id:2},{id:3}], (item) => item.id`,
+    output: `[1,2,3]`
+  },
+  {
     input: `["a", "b"], ["y", "z"]`,
     output: `[["a", "y"], ["b", "z"]]`
   },
