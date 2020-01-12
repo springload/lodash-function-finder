@@ -42,20 +42,6 @@ export default function(input: string, output: string): LodashFnsResponse {
     }
     const inputValue = lodash.cloneDeep(inputArgs);
 
-    if (
-      // special case for 'map'-like functions
-      // if both arrays and same length a map
-      // could return this data
-      ["map"].includes(fn) &&
-      Array.isArray(inputValue) &&
-      inputValue.length > 1 && // has at least 2 args
-      Array.isArray(inputValue[0]) && // first input arg is an array
-      Array.isArray(outputValue) &&
-      inputValue[0].length === outputValue.length
-    ) {
-      return true;
-    }
-
     try {
       const actualOutputObj = lodashFn(...inputValue);
       const actualOutputObjString = JSON5.stringify(actualOutputObj);
