@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/lodash-function-finder/precache-manifest.563ca9d73787ea6ec818ffeedc83a494.js"
+  "/lodash-function-finder/precache-manifest.e25aded1663b7942373c96dfcc9d38b0.js"
 );
 
 self.addEventListener('message', (event) => {
